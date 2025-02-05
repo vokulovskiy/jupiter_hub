@@ -1,7 +1,7 @@
-##1. Установка ubuntu
-Настроить сеть -> тип подключения: сетевой мост
+##1. ╨г╤Б╤В╨░╨╜╨╛╨▓╨║╨░ ubuntu
+╨Э╨░╤Б╤В╤А╨╛╨╕╤В╤М ╤Б╨╡╤В╤М -> ╤В╨╕╨┐ ╨┐╨╛╨┤╨║╨╗╤О╤З╨╡╨╜╨╕╤П: ╤Б╨╡╤В╨╡╨▓╨╛╨╣ ╨╝╨╛╤Б╤В
 ip a
-##2. Установка ssh
+##2. ╨г╤Б╤В╨░╨╜╨╛╨▓╨║╨░ ssh
 sudo apt update && sudo apt upgrade
 sudo apt install openssh-server
 sudo systemctl enable --now ssh
@@ -20,25 +20,25 @@ chmod 0700 ~/.ssh
 touch ~/.ssh/authorized_keys
 chmod 0644 ~/.ssh/authorized_keys
 
-##3. Установка docker
-1. Обновляем индексы пакетов apt
+##3. ╨г╤Б╤В╨░╨╜╨╛╨▓╨║╨░ docker
+1. ╨Ю╨▒╨╜╨╛╨▓╨╗╤П╨╡╨╝ ╨╕╨╜╨┤╨╡╨║╤Б╤Л ╨┐╨░╨║╨╡╤В╨╛╨▓ apt
 sudo apt update
 
-2. Устанавливаем дополнительные пакеты
+2. ╨г╤Б╤В╨░╨╜╨░╨▓╨╗╨╕╨▓╨░╨╡╨╝ ╨┤╨╛╨┐╨╛╨╗╨╜╨╕╤В╨╡╨╗╤М╨╜╤Л╨╡ ╨┐╨░╨║╨╡╤В╤Л
 sudo apt install curl software-properties-common ca-certificates apt-transport-https -y
 
-3. Импортируем GPG-ключ
+3. ╨Ш╨╝╨┐╨╛╤А╤В╨╕╤А╤Г╨╡╨╝ GPG-╨║╨╗╤О╤З
 wget -O- https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor | sudo tee /etc/apt/keyrings/docker.gpg > /dev/null
 
-4. Добавляем репозиторий докера
+4. ╨Ф╨╛╨▒╨░╨▓╨╗╤П╨╡╨╝ ╤А╨╡╨┐╨╛╨╖╨╕╤В╨╛╤А╨╕╨╣ ╨┤╨╛╨║╨╡╤А╨░
 echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu jammy stable"| sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-5. В очередной раз обновляем индексы пакетов
+5. ╨Т ╨╛╤З╨╡╤А╨╡╨┤╨╜╨╛╨╣ ╤А╨░╨╖ ╨╛╨▒╨╜╨╛╨▓╨╗╤П╨╡╨╝ ╨╕╨╜╨┤╨╡╨║╤Б╤Л ╨┐╨░╨║╨╡╤В╨╛╨▓
 sudo apt update
 
-6. Проверяем репозиторий
+6. ╨Я╤А╨╛╨▓╨╡╤А╤П╨╡╨╝ ╤А╨╡╨┐╨╛╨╖╨╕╤В╨╛╤А╨╕╨╣
 apt-cache policy docker-ce
 
-7. Устанавливаем докер
+7. ╨г╤Б╤В╨░╨╜╨░╨▓╨╗╨╕╨▓╨░╨╡╨╝ ╨┤╨╛╨║╨╡╤А
  
 sudo apt install docker-ce -y
 sudo systemctl status docker
@@ -46,26 +46,26 @@ sudo usermod -aG docker $USER && newgrp docker
 su - uuser
 id -nG
 
-8. Устанавливаем docker-compose
+8. ╨г╤Б╤В╨░╨╜╨░╨▓╨╗╨╕╨▓╨░╨╡╨╝ docker-compose
 sudo apt-get install docker-compose -y
 
 docker run hello-world
 docker ps
 
-9. Загрузка образа JupyterHub:
+9. ╨Ч╨░╨│╤А╤Г╨╖╨║╨░ ╨╛╨▒╤А╨░╨╖╨░ JupyterHub:
 
 docker pull quay.io/jupyter/base-notebook:latest
 
-10. Запуск контейнерa JupyterHub на хосте.
+10. ╨Ч╨░╨┐╤Г╤Б╨║ ╨║╨╛╨╜╤В╨╡╨╣╨╜╨╡╤Аa JupyterHub ╨╜╨░ ╤Е╨╛╤Б╤В╨╡.
 ls
 cd ~
 pwd
 mkdir jupiter_hub
 cd jupiter_hub
-## Копируем файлы в каталог jupiter_hub
-## Собираем образ
+## ╨Ъ╨╛╨┐╨╕╤А╤Г╨╡╨╝ ╤Д╨░╨╣╨╗╤Л ╨▓ ╨║╨░╤В╨░╨╗╨╛╨│ jupiter_hub
+## ╨б╨╛╨▒╨╕╤А╨░╨╡╨╝ ╨╛╨▒╤А╨░╨╖
 docker compose build
-## Запускаем
+## ╨Ч╨░╨┐╤Г╤Б╨║╨░╨╡╨╝
 docker compose up -d
 docker ps 
 docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Names}}"
@@ -79,6 +79,6 @@ docker run --rm \
   quay.io/jupyter/minimal-notebook \
   tar cvf /backups/user1-backup.tar /notebooks
 
-12. Чтобы остановить контейнер JupyterHub:
+12. ╨з╤В╨╛╨▒╤Л ╨╛╤Б╤В╨░╨╜╨╛╨▓╨╕╤В╤М ╨║╨╛╨╜╤В╨╡╨╣╨╜╨╡╤А JupyterHub:
 
 docker compose down
