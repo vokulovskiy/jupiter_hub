@@ -64,12 +64,14 @@ mkdir jupiter_hub
 cd jupiter_hub
 ## Копируем файлы в каталог jupiter_hub
 ## Собираем образ
+
 docker compose build
 ## Запускаем
 docker compose up -d
+
 docker ps 
 docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Names}}"
-docker inspect -f '{{ .Mounts }}' jupyter-user1
+docker inspect -f '{{ .Mounts }}' jupyter-uuser
 
 11. Backup user notebook
 docker run --rm \
@@ -77,8 +79,12 @@ docker run --rm \
   -v /tmp:/backups \
   -v user1:/notebooks \
   quay.io/jupyter/minimal-notebook \
-  tar cvf /backups/user1-backup.tar /notebooks
+  tar cvf /backups/uuser-backup.tar /notebooks
 
 12. Чтобы остановить контейнер JupyterHub:
 
 docker compose down
+
+docker volume ls
+docker volume prune -a
+
