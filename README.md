@@ -322,9 +322,10 @@ GIL — механизм в CPython, который позволяет выпо�
 from multiprocessing import Process
 def task():
   print("Выполнение задачи")
-  p = Process(target=task)
-  p.start()
-  p.join()
+
+p = Process(target=task)
+p.start()
+p.join()
 ```
 **6. Что такое многопоточность?**
 
@@ -336,9 +337,10 @@ def task():
 from threading import Thread
 def task():
   print("Выполнение задачи")
-  t = Thread(target=task)
-  t.start()
-  t.join()
+
+t = Thread(target=task)
+t.start()
+t.join()
 ```
 **7. Что такое асинхронное программирование?**
 
@@ -351,7 +353,7 @@ import asyncio
 async def task():
   print("Выполнение задачи")
   await asyncio.sleep(1)
-  asyncio.run(task())
+asyncio.run(task())
 ```
 **8. Что такое парадигма OOP?**
 
