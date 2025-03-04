@@ -297,9 +297,9 @@ WHERE id IN (SELECT id FROM other\_table WHERE value > 100);
 
 ```python
 class Node:
-def \_\_init\_\_(self, data):
-self.data = data
-self.next = None
+  def \_\_init\_\_(self, data):
+    self.data = data
+    self.next = None
 ```
 **3. Что такое кортеж, список и прочее?**
 
@@ -321,10 +321,10 @@ GIL — механизм в CPython, который позволяет выпо�
 ```python
 from multiprocessing import Process
 def task():
-print("Выполнение задачи")
-p = Process(target=task)
-p.start()
-p.join()
+  print("Выполнение задачи")
+  p = Process(target=task)
+  p.start()
+  p.join()
 ```
 **6. Что такое многопоточность?**
 
@@ -335,10 +335,10 @@ p.join()
 ```python
 from threading import Thread
 def task():
-print("Выполнение задачи")
-t = Thread(target=task)
-t.start()
-t.join()
+  print("Выполнение задачи")
+  t = Thread(target=task)
+  t.start()
+  t.join()
 ```
 **7. Что такое асинхронное программирование?**
 
@@ -349,9 +349,9 @@ t.join()
 ```python
 import asyncio
 async def task():
-print("Выполнение задачи")
-await asyncio.sleep(1)
-asyncio.run(task())
+  print("Выполнение задачи")
+  await asyncio.sleep(1)
+  asyncio.run(task())
 ```
 **8. Что такое парадигма OOP?**
 
@@ -400,30 +400,34 @@ def bubble\_sort(arr):
 Пример:
 
 ```python
-def merge\_sort(arr):
-  if len(arr) > 1:
-  mid = len(arr) // 2
-  left = arr[:mid]
-  right = arr[mid:]
-  merge\_sort(left)
-  merge\_sort(right)
-  i = j = k = 0
-  while i < len(left) and j < len(right):
-  if left[i] < right[j]:
-  arr[k] = left[i]
-  i += 1
-  else:
-  arr[k] = right[j]
-  j += 1
-  k += 1
-  while i < len(left):
-  arr[k] = left[i]
-  i += 1
-  k += 1
-  while j < len(right):
-  arr[k] = right[j]
-  j += 1
-  k += 1
+def merge_sort(arr):
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        left = arr[:mid]
+        right = arr[mid:]
+
+        merge_sort(left)
+        merge_sort(right)
+
+        i = j = k = 0
+        while i < len(left) and j < len(right):
+            if left[i] < right[j]:
+                arr[k] = left[i]
+                i += 1
+            else:
+                arr[k] = right[j]
+                j += 1
+            k += 1
+
+        while i < len(left):
+            arr[k] = left[i]
+            i += 1
+            k += 1
+
+        while j < len(right):
+            arr[k] = right[j]
+            j += 1
+            k += 1
 ```
 **13. Что такое жадный алгоритм?**
 
