@@ -133,19 +133,12 @@ Secret Management — управление секретами (пароли, к�
 Пример:
 
 ```sql
-
 -- Оконная функция
-
 SELECT id, value, SUM(value) OVER (PARTITION BY category)
-
 FROM table;
-
 -- GROUP BY
-
 SELECT category, SUM(value)
-
 FROM table
-
 GROUP BY category;
 ```
 **2. Конструкции HAVING и WHERE**
@@ -156,13 +149,9 @@ GROUP BY category;
 Пример:
 
 ```sql
-
 SELECT category, SUM(value)
-
 FROM table
-
 GROUP BY category
-
 HAVING SUM(value) > 100;
 ```
 **3. Что такое LIMIT OFFSET?**
@@ -173,9 +162,7 @@ HAVING SUM(value) > 100;
 Пример:
 
 ```sql
-
 SELECT \* FROM table
-
 LIMIT 10 OFFSET 20; -- Пропустить 20 строк, вернуть следующие 10.
 ```
 **4. Что такое ранжирование?**
@@ -189,9 +176,7 @@ LIMIT 10 OFFSET 20; -- Пропустить 20 строк, вернуть сле
 Пример:
 
 ```sql
-
 SELECT id, value, RANK() OVER (ORDER BY value DESC)
-
 FROM table;
 ```
 **5. Что такое EXPLAIN?**
@@ -201,7 +186,6 @@ EXPLAIN — команда для анализа выполнения запр�
 Пример:
 
 ```sql
-
 EXPLAIN SELECT \* FROM table WHERE id = 1;
 ```
 **6. Что такое индексирование?**
@@ -236,13 +220,9 @@ EXPLAIN SELECT \* FROM table WHERE id = 1;
 **11. Как посмотреть индексы на таблицу?**
 
 ```sql
-
 -- PostgreSQL
-
 \dt+ table\_name
-
 -- MySQL
-
 SHOW INDEX FROM table\_name;
 ```
 **12. Методы оптимизации таблиц**
@@ -284,9 +264,7 @@ JOIN объединяет строки из двух или более табл
 Пример:
 
 ```sql
-
 SELECT \* FROM table
-
 WHERE id IN (SELECT id FROM other\_table WHERE value > 100);
 ```
 **Почему подзапросы лучше вьюх?**
@@ -318,13 +296,9 @@ WHERE id IN (SELECT id FROM other\_table WHERE value > 100);
 Связанный список — структура данных, где каждый элемент (узел) содержит данные и ссылку на следующий узел. В Python можно реализовать вручную:
 
 ```python
-
 class Node:
-
 def \_\_init\_\_(self, data):
-
 self.data = data
-
 self.next = None
 ```
 **3. Что такое кортеж, список и прочее?**
@@ -345,17 +319,11 @@ GIL — механизм в CPython, который позволяет выпо�
 Пример:
 
 ```python
-
 from multiprocessing import Process
-
 def task():
-
 print("Выполнение задачи")
-
 p = Process(target=task)
-
 p.start()
-
 p.join()
 ```
 **6. Что такое многопоточность?**
@@ -365,17 +333,11 @@ p.join()
 Пример:
 
 ```python
-
 from threading import Thread
-
 def task():
-
 print("Выполнение задачи")
-
 t = Thread(target=task)
-
 t.start()
-
 t.join()
 ```
 **7. Что такое асинхронное программирование?**
@@ -385,15 +347,10 @@ t.join()
 Пример:
 
 ```python
-
 import asyncio
-
 async def task():
-
 print("Выполнение задачи")
-
 await asyncio.sleep(1)
-
 asyncio.run(task())
 ```
 **8. Что такое парадигма OOP?**
@@ -429,18 +386,12 @@ asyncio.run(task())
 Пример:
 
 ```python
-
 def bubble\_sort(arr):
-
-n = len(arr)
-
-for i in range(n):
-
-for j in range(0, n-i-1):
-
-if arr[j] > arr[j+1]:
-
-arr[j], arr[j+1] = arr[j+1], arr[j]
+  n = len(arr)
+    for i in range(n):
+      for j in range(0, n-i-1):
+        if arr[j] > arr[j+1]:
+          arr[j], arr[j+1] = arr[j+1], arr[j]
 ```
 **12. Сортировка слиянием**
 
@@ -449,54 +400,30 @@ arr[j], arr[j+1] = arr[j+1], arr[j]
 Пример:
 
 ```python
-
 def merge\_sort(arr):
-
-if len(arr) > 1:
-
-mid = len(arr) // 2
-
-left = arr[:mid]
-
-right = arr[mid:]
-
-merge\_sort(left)
-
-merge\_sort(right)
-
-i = j = k = 0
-
-while i < len(left) and j < len(right):
-
-if left[i] < right[j]:
-
-arr[k] = left[i]
-
-i += 1
-
-else:
-
-arr[k] = right[j]
-
-j += 1
-
-k += 1
-
-while i < len(left):
-
-arr[k] = left[i]
-
-i += 1
-
-k += 1
-
-while j < len(right):
-
-arr[k] = right[j]
-
-j += 1
-
-k += 1
+  if len(arr) > 1:
+  mid = len(arr) // 2
+  left = arr[:mid]
+  right = arr[mid:]
+  merge\_sort(left)
+  merge\_sort(right)
+  i = j = k = 0
+  while i < len(left) and j < len(right):
+  if left[i] < right[j]:
+  arr[k] = left[i]
+  i += 1
+  else:
+  arr[k] = right[j]
+  j += 1
+  k += 1
+  while i < len(left):
+  arr[k] = left[i]
+  i += 1
+  k += 1
+  while j < len(right):
+  arr[k] = right[j]
+  j += 1
+  k += 1
 ```
 **13. Что такое жадный алгоритм?**
 
@@ -617,12 +544,10 @@ echo "Hello, world!"
 #!/bin/bash
 
 echo "Hello, world!"
+```
 
-Если нужно больше деталей, дайте знать! 😊
 
-airflow что это, для чего. какие у нас есть таски в airflow. Какое время в Airflow выстраивается по Москве или не по Москве? Какой часовой пояс используется? Что такое XCOM? Что такое Connections? Что такое сенсоры,какие бывают? Airflow оператор, что это такое как он работает как там писать код. что такое файл requirements.txt и как его в Airflow подкладывать. рассказать какие зависимости в Airflow можно вообще протягивать.
-
-Вот краткие ответы на ваши вопросы по Apache Airflow:
+# Apache Airflow:
 
 **1. Что такое Airflow и для чего он нужен?**
 
@@ -655,15 +580,11 @@ XCOM (Cross-Communication) — механизм для обмена данным
 ```python
 
 def push\_function(\*\*kwargs):
-
 kwargs['ti'].xcom\_push(key='my\_key', value='my\_value')
-
 def pull\_function(\*\*kwargs):
-
 value = kwargs['ti'].xcom\_pull(key='my\_key')
-
 print(value)
-
+```
 **5. Что такое Connections?**
 
 Connections — это настройки для подключения к внешним системам (например, базы данных, API). Они хранятся в базе данных Airflow и могут быть настроены через интерфейс или код.
@@ -671,13 +592,10 @@ Connections — это настройки для подключения к вн�
 Пример:
 
 ```python
-
 from airflow.providers.postgres.hooks.postgres import PostgresHook
-
 hook = PostgresHook(postgres\_conn\_id='my\_connection')
-
 conn = hook.get\_conn()
-
+```
 **6. Что такое Sensors и какие они бывают?**
 
 Sensors — это специальные операторы, которые ждут выполнения определенного условия. Примеры:
@@ -703,7 +621,7 @@ poke\_interval=30,
 timeout=300,
 
 )
-
+```
 **7. Что такое оператор в Airflow и как он работает?**
 
 Оператор — это задача, которая выполняет определенное действие. Примеры:
