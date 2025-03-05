@@ -782,7 +782,7 @@ bash_task = BashOperator(
   task_id='print_date',
   bash_command='date',
   )
-
+```
 **8. Что такое файл requirements.txt и как его использовать в Airflow?**
 
 requirements.txt — файл, содержащий список зависимостей Python. В Airflow его можно использовать для установки дополнительных библиотек.
